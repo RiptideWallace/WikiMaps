@@ -1,3 +1,7 @@
+////////////////////////////////////////////////////
+//Keep this section for when we re-introduce users//
+////////////////////////////////////////////////////
+
 // $(() => {
 //   $.ajax({
 //     method: "GET",
@@ -15,7 +19,10 @@ $(() => {
     url: "/api/maps"
   }).done((maps) => {
     for(map of maps) {
-      $("<div>").text(map.name).appendTo($("body"));
+      ($("<div>").text(map.name)
+        .append($("<div>").text(map.description))
+        .append($("<img>").attr("src", map.image_url)))
+        .appendTo($("body"));
     }
   });;
 });

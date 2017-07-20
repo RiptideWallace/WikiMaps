@@ -15,7 +15,7 @@ module.exports = (knex) => {
   // });
   router.post("/register", (req, res) => {
     knex('users')
-      .insert({name: req.body.email})
+      .insert({name: req.body.username, email: req.body.email, password: req.body.password})
       .then((results) => {
         res.redirect("/");
       })

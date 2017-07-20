@@ -16,11 +16,11 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
-
   <body>
-    <div class="container main-container">
-      <% include partials/_header.ejs %>
 
+    <% include partials/_header.ejs %>
+
+    <div class="container main-container">
       <div class="container">
         <h1>Register</h1>
         <form action="api/users/register" method="POST">
@@ -40,8 +40,9 @@
         </form>
         <p>Or <a href="/login">login</a> if you're a local.</p>
       </div>
-
-      <% include partials/_footer.ejs %>
     </div>
+
+    <% include partials/_footer.ejs %>
+
   </body>
 </html>

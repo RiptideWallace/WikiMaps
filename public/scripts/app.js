@@ -22,7 +22,7 @@ $(() => {
       ($("<div>").text(map.name)
         .append($("<div>").text(map.description))
         .append($("<img>").attr("src", map.image_url)))
-        .appendTo($("body"));
+        .appendTo($("body").find(".main-container"));
     }
   });;
 });

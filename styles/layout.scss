@@ -7,5 +7,14 @@ body {
 }
 
 footer {
+  border-top: 1px solid #eee;
+  color: #888;
+  font-size: 0.8em;
+  margin-top: 20px;
+  padding: 20px 0;
   text-align: center;
+}
+
+html {
+  overflow-y: scroll;
 }

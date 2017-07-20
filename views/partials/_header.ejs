@@ -4,21 +4,17 @@
 <title>"Use a variable for the title"</title>
 
 <!-- CSS (load bootstrap from a CDN) -->
-//<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-// <style>
-//     body    { padding-top:50px; }
-// </style>
 
 <% if (!username) { %>
 <h4>Please log in!</h4>
-<form action="/login" method="POST" style="margin:50px;">
+<form action="/login" method="POST" >
   <label for="username">Enter a username:</label>
-  <input id="username" type="text" name="username" placeholder="username" style="width: 300px">
+  <input id="username" type="text" name="username" placeholder="username">
   <input type="submit" value="Submit">
 </form>
 <% } else { %>
 <h4>Current user: <%= username %> </h4>
-<form action="/logout" method="POST" style="margin:50px;">
+<form action="/logout" method="POST" >
   <input type="submit" value="Logout">
 </form>
 <% } %>

@@ -1,23 +1,8 @@
 <!-- views/partials/_header.ejs -->
 
-<header>
-  <div class="page-header">
-    <h1>WikiMaps <small>Clever tagline here</small></h1>
-  </div>
-
-  <div>
-    <!-- EJS if !username -->
-    <h4>Please log in!</h4>
-    <form action="/login" method="POST" >
-      <label for="username">Enter a username:</label>
-      <input id="username" type="text" name="username" placeholder="username">
-      <input type="submit" value="Submit">
-    </form>
-    <!-- EJS else
-    <h4>Current user: <EJS reference to username> </h4>
-    <form action="/logout" method="POST" >
-      <input type="submit" value="Logout">
-    </form>
-    EJS closing bracket -->
-  </div>
+<header class="container page-header">
+  <nav class="navbar navbar-static-top">
+    <a class="navbar-brand">WikiMaps</a>
+    <p class="navbar-text navbar-right"><a href="/login">Login</a> or <a href="/register">Register</a></p>
+  </nav>
 </header>

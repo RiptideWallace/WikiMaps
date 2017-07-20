@@ -52,6 +52,11 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+//A page where a new map can be created
+app.get("/new", (req, res) => {
+  res.render("create_map");
+})
+
 // A page for rendering a specific map
 app.get("/:id", (req, res) => {
   const templateVars = {
@@ -59,6 +64,8 @@ app.get("/:id", (req, res) => {
   }
   res.render("maps_show", templateVars);
 });
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

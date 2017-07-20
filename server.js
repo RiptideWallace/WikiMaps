@@ -42,6 +42,11 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// Login page
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
 // A page for rendering a specific map
 app.get("/:id", (req, res) => {
   const templateVars = {

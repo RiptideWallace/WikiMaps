@@ -1,0 +1,39 @@
+<!-- views/maps_show.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/maps_show.js"></script>
+  </head>
+  <body>
+    <div id="map-title">
+    </div>
+    <div>
+      <h3>My Google Maps Demo</h3>
+      <div id="map"></div>
+      <script>
+        function initMap() {
+          var victoria = {lat: 48.4284, lng: -123.3656};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: victoria
+          });
+        }
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
+      </script>
+      </div>
+  </body>
+</html>

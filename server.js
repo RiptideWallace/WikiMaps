@@ -42,6 +42,14 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// A page for rendering a specific map
+app.get("/:id", (req, res) => {
+  const templateVars = {
+    id: req.params.id
+  }
+  res.render("maps_show", templateVars);
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });

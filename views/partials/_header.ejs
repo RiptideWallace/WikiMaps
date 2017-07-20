@@ -3,6 +3,10 @@
     <header class="container page-header">
       <nav class="navbar navbar-static-top">
         <a class="navbar-brand" href="/">WikiMaps</a>
-        <p class="navbar-text navbar-right"><a href="/login">Login</a> or <a href="/register">Register</a></p>
+        <% if (userId) { %>
+          <p class="navbar-text navbar-right">Logout</p>
+        <% } else { %>
+          <p class="navbar-text navbar-right"><a href="/login">Login</a> or <a href="/register">Register</a></p>
+        <% } %>
       </nav>
     </header>

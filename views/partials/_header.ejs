@@ -1,20 +1,21 @@
 <!-- views/partials/_header.ejs -->
 
-<meta charset="UTF-8">
-<title>"Use a variable for the title"</title>
+<div class="page-header">
+  <h1>WikiMaps <small>Clever tagline here</small></h1>
+</div>
 
-<!-- CSS (load bootstrap from a CDN) -->
-
-<% if (!username) { %>
-<h4>Please log in!</h4>
-<form action="/login" method="POST" >
-  <label for="username">Enter a username:</label>
-  <input id="username" type="text" name="username" placeholder="username">
-  <input type="submit" value="Submit">
-</form>
-<% } else { %>
-<h4>Current user: <%= username %> </h4>
-<form action="/logout" method="POST" >
-  <input type="submit" value="Logout">
-</form>
-<% } %>
+<div>
+  <!-- EJS if !username -->
+  <h4>Please log in!</h4>
+  <form action="/login" method="POST" >
+    <label for="username">Enter a username:</label>
+    <input id="username" type="text" name="username" placeholder="username">
+    <input type="submit" value="Submit">
+  </form>
+  <!-- EJS else
+  <h4>Current user: <EJS reference to username> </h4>
+  <form action="/logout" method="POST" >
+    <input type="submit" value="Logout">
+  </form>
+  EJS closing bracket -->
+</div>

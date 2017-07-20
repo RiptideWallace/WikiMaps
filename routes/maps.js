@@ -13,6 +13,7 @@ module.exports = (knex) => {
         res.json(results);
     });
   });
+
   router.get("/:id", (req, res) => {
     knex
       .select("*")
@@ -23,6 +24,18 @@ module.exports = (knex) => {
       })
       .catch((err) => {
         res.status(404).send("This Map Does Not Exist");
+      });
+  });
+
+  router.post("/new", (req, res) => {
+    knex('maps')
+      .insert({name: req.body.name, description: req.body.description, image_url: req.body.image_url})
+      .then((results) => {
+        res.redirect("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).send("New Map Error");
       });
   });
 

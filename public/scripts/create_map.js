@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
-  $('#newMapInfo').hide();
-  $('#saveMessage').hide();
-}
+// jQuery(document).ready(function(){
+//   $('#newMapInfo').hide();
+//   $('#newMapSave').hide();
+// }

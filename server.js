@@ -57,7 +57,7 @@ app.get("/register", (req, res) => {
 //A page where a new map can be created
 app.get("/new", (req, res) => {
   res.render("create_map");
-})
+});
 
 // A page for rendering a specific map
 app.get("/:id", (req, res) => {
@@ -66,6 +66,7 @@ app.get("/:id", (req, res) => {
   }
   res.render("maps_show", templateVars);
 });
+
 
 
 

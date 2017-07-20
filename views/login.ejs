@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WikiMaps: Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+  <!-- EJS _header partial will go here -->
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+      <label for="email">Email:</label>
+      <input id="email" type="email" name="email" placeholder="user@example.com">
+      <label for="password">Password:</label>
+      <input id="password" type="password" name="password" placeholder="****">
+      <input type="submit" value="Submit">
+    </form>
+    <p>Or <a href="/register">register</a> an account if this is your first time.</p>
+  </body>
+</html>

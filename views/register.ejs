@@ -1,9 +1,10 @@
-<!-- views/login.ejs -->
+<!-- views/register.ejs -->
 
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
-    <title>WikiMaps: Login</title>
+    <title>WikiMaps: Register</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -11,13 +12,13 @@
     <header>
       <% include partials/_header.ejs %>
     </header>
-    <h1>Login</h1>
-    <form action="/login" method="POST">
+    <h1>Register</h1>
+    <form method="POST" action="/register">
       <label for="email">Email:</label>
-      <input id="email" type="email" name="email" placeholder="Enter Email">
+      <input id="email" type="email" name="email" placeholder="Enter New Email">
       <label for="password">Password:</label>
-      <input id="password" type="password" name="password" placeholder="Enter Password">
-      <input type="submit" value="Log In">
+      <input id="password" type="password" name="password" placeholder="Enter New Password">
+      <input type="submit" value="Sign Up">
     </form>
     <p>Or <a href="/register">register</a> an account if this is your first time.</p>
     <% include partials/_footer.ejs %>

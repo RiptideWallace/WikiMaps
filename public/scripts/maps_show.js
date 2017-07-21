@@ -13,4 +13,6 @@ jQuery(document).ready(function(){
     console.log(error)
     $("#map").empty().text(error.responseText);
   })
+
+
 });

@@ -17,7 +17,7 @@
     <script type="text/javascript" src="/scripts/maps_show.js"></script>
   </head>
   <body>
-    <input type="hidden" id="map-id" value="<%=id%>">
+    <input type="hidden" id="map-id" value="<%=mapId%>">
     <div id="map-title">
     </div>
     <div>
@@ -26,10 +26,38 @@
       <script>
         function initMap() {
           var victoria = {lat: 48.4284, lng: -123.3656};
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
+          var showMap = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
             center: victoria
           });
+
+          google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
+
+            $.ajax({
+            method: "GET",
+            url: "/maps/"+ $('#map-id').val() +"/markers",
+          }).done((markers) => {
+            markers.forEach(function(marker) {
+              var position = {
+                lat: marker.latitude,
+                lng: marker.longitude
+              }
+              addMarker(position);
+            });
+          }).fail((error) => {
+          console.log(error)
+          $("#map").empty().text(error.responseText);
+        });
+      });
+
+          function addMarker(location) {
+            var marker = new google.maps.Marker({
+              position: location,
+              map: showMap
+            })
+          }
+
+
         }
       </script>
       <script async defer

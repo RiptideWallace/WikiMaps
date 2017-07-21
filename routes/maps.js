@@ -30,11 +30,11 @@ module.exports = (knex) => {
     res.render("create_map");
   });
 
-  router.get("/:id", (req, res) => {
+  router.get("/:mapId", (req, res) => {
     knex
       .select("*")
       .from('maps')
-      .where({id: req.params.id})
+      .where({id: req.params.mapId})
       .then((results) => {
         res.json(results);
       })
@@ -43,11 +43,39 @@ module.exports = (knex) => {
       });
   });
 
-  router.get("/:id/show", (req, res) => {
+  router.get("/:mapId/show", (req, res) => {
     const templateVars = {
-      id: req.params.id
+      mapId: req.params.mapId
     }
     res.render("maps_show", templateVars);
+  });
+
+  router.get
+
+  router.get("/:mapId/markers/:markerId", (req, res) => {
+    knex
+      .select("*")
+      .from('markers')
+      .where({id: req.params.markerId})
+      .then((results) => {
+        res.json(results);
+      })
+      .catch((err) => {
+        res.status(404).send("This Marker Does Not Exist");
+      });
+  });
+
+  router.get("/:mapId/markers", (req, res) => {
+    knex
+      .select("*")
+      .from('markers')
+      .where({maps_id: req.params.mapId})
+      .then((results) => {
+        res.json(results);
+      })
+      .catch((err) => {
+        res.status(404).send("Map & Markers Do Not Match")
+      });
   });
 
   return router;

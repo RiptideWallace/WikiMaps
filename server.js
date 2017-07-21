@@ -12,6 +12,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const cookieSession = require('cookie-session');
 
 // Seperated Routes for each Resource
 const mapRoutes = require("./routes/maps");
@@ -24,6 +25,17 @@ app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
+
+// Set up session cookies
+app.use(cookieSession({
+  keys: ['doggos', 'bork']
+}));
+
+// Set up global session vars
+app.use((req, res, next) => {
+  res.locals.userId = req.session.userId;
+  next();
+})
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,11 +58,25 @@ app.get("/", (req, res) => {
 
 // Login page
 app.get("/login", (req, res) => {
+  if (req.session.userId) {
+    res.redirect("/");
+    return;
+  }
   res.render("login");
+});
+
+// Logout (POST)
+app.post("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/");
 });
 
 // Register page (GET)
 app.get("/register", (req, res) => {
+  if (req.session.userId) {
+    res.redirect("/");
+    return;
+  }
   res.render("register");
 });
 

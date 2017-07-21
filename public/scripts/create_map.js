@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){
+  $('#markerInfo');
   $('#saveMarkerInfo').on('click', function(event){
     $.ajax({
       type: 'POST',
@@ -8,6 +9,7 @@ jQuery(document).ready(function(){
         var markerInfo = $('#markerInfo').serialize();
         console.log(markerInfo)
       }
-    });
+    })
   });
 });
+

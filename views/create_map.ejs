@@ -41,7 +41,7 @@
   <div id="floating-panel">
     <input onclick="clearMarkers();" type=button value="Hide Markers">
     <input onclick="showMarkers();" type=button value="Show All Markers">
-    <input onclick="deleteMarkers();" type=button value="Delete Markers">
+    <input onclick="deleteMarkers(), $('#markerInfo').empty();" type=button value="Delete Markers">
   </div>
 
   <form id='markerInfo'>
@@ -49,19 +49,19 @@
       <tr>
         <td>Title:</td>
         <td>
-          <input type='text' class='title' name='name'/>
+          <input type='text' class='title' name='markerName'/>
         </td>
       </tr>
       <tr>
-        <td>Description:</td>
+        <td>Outline:</td>
         <td>
-          <input type='text' class='description' name='description'/>
+          <input type='text' class='outline' name='markerOutline'/>
         </td>
       </tr>
       <tr>
-        <td>Image:</td>
+        <td>Link:</td>
         <td>
-          <input type='text' class='image_url' name='image'/>
+          <input type='text' class='link' name='link'/>
         </td>
       </tr>
       <tr>
@@ -69,29 +69,36 @@
           <input id='saveMarkerInfo' type='button' value='Save'/>
         </td>
       </tr>
-      <input id='markerLat' type='hidden' name='latitude'>
       <input id='markerLng' type='hidden' name='longitude'>
-
+      <input id='markerLat' type='hidden' name='latitude'>
     </table>
   </form>
-  <div id="message">Location saved</div>
+  <!-- <div id='saveMessage'>Location Saved</div> -->
     <script>
       var map;
       var marker;
       var markers = [];
       var infoWindow;
+      var messagewindow
 
+      //The initial map that is shown on load
       function initMap() {
-        var victoria = {lat: 48.4284, lng: -123.3656};
+        var victoria = {lng: -123.3656, lat: 48.4284};
         map = new google.maps.Map(document.getElementById('map'), {
           center: victoria,
           zoom: 13
         });
 
+        //Renders the code for the form as the info window
         infowindow = new google.maps.InfoWindow({
           content: document.getElementById('markerInfo')
         });
 
+        messagewindow = new google.maps.InfoWindow({
+          content: document.getElementById('saveMessage')
+        })
+
+        //Adds a marker when a point on the map is clicked
         map.addListener('click', function(event) {
           addMarker(event.latLng);
         });
@@ -106,8 +113,8 @@
         markers.push(marker);
 
         google.maps.event.addListener(marker, 'click', function() {
-          $('#markerLat').val(location.lat);
           $('#markerLng').val(location.lng);
+          $('#markerLat').val(location.lat);
           infowindow.open(map, marker);
         });
       }

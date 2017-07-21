@@ -13,7 +13,7 @@
     <% include partials/_header.ejs %>
 
     <div class="container main-container">
-      <div class="container">
+      <div class="container form-container">
         <h1>Login</h1>
         <form action="api/users/login" method="POST">
           <div class="form-group">
@@ -24,7 +24,7 @@
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-block btn-primary">Submit</button>
         </form>
         <p>Or <a href="/register">register</a> an account if this is your first time.</p>
       </div>

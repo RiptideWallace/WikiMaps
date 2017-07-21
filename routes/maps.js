@@ -26,6 +26,10 @@ module.exports = (knex) => {
       });
   });
 
+  router.get("/new", (req, res) => {
+    res.render("create_map");
+  });
+
   router.get("/:id", (req, res) => {
     knex
       .select("*")

@@ -6,9 +6,7 @@ const bcrypt = require('bcrypt');
 
 module.exports = (knex) => {
 
-// SELECT maps.name, maps.description FROM maps JOIN users ON (maps.user_id=users.id) WHERE users.id = 1;
-
-  router.get("/:id", (req, res) => {
+  router.get("/:id/maps", (req, res) => {
     knex
       .select("maps.name", "maps.description", "maps.image_url")
       .from('maps')

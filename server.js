@@ -65,6 +65,12 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+// Logout (POST)
+app.post("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/");
+});
+
 // Register page (GET)
 app.get("/register", (req, res) => {
   if (req.session.userId) {

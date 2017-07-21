@@ -3,7 +3,7 @@ $(() => {
   var mapId = $("#map-id").val();
   $.ajax({
     method: "GET",
-    url: "/api/maps/" + mapId,
+    url: "/maps/" + mapId,
   }).done((maps) => {
     for(map of maps) {
       ($("#map-title").text(map.name)

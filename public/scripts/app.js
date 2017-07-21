@@ -16,7 +16,7 @@
 $(() => {
   $.ajax({
     method: "GET",
-    url: "/api/maps"
+    url: "/maps"
   }).done((maps) => {
     for(map of maps) {
       ($("<div>").addClass("col-xs-12 col-sm-4")

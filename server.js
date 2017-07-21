@@ -50,9 +50,13 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 
-app.use("/api/maps", mapRoutes(knex));
+app.use("/maps", mapRoutes(knex));
 app.use("/api/users", userRoutes(knex));
 app.use("/api/markers", markerRoutes(knex));
+
+
+
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -83,18 +87,6 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
-//A page where a new map can be created
-app.get("/new", (req, res) => {
-  res.render("create_map");
-});
-
-// A page for rendering a specific map
-app.get("/:id", (req, res) => {
-  const templateVars = {
-    id: req.params.id
-  }
-  res.render("maps_show", templateVars);
-});
 
 
 

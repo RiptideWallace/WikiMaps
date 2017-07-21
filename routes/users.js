@@ -6,6 +6,30 @@ const bcrypt = require('bcrypt');
 
 module.exports = (knex) => {
 
+  router.get("/:id", (req, res) => {
+    knex
+      .select("id", "name")
+      .from('users')
+      .where({id: req.params.id})
+      .then((results) => {
+        res.json(results);
+      })
+      .catch((err) => {
+        res.status(404).send("This User Does Not Exist");
+      });
+  });
+  router.get("/:id/show", (req, res) => {
+    knex('users')
+      .where({id: req.params.id})
+      .then((results) => {
+        if (results.length === 0) {
+          res.status(404).send("This user is not in our DB");
+          return;
+        }
+        const templateVars = {user: results[0]};
+        res.render("user", templateVars);
+      });
+  });
   router.post("/login", (req, res) => {
     knex
       .select("*")

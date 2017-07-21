@@ -1,4 +1,13 @@
-// jQuery(document).ready(function(){
-//   $('#newMapInfo').hide();
-//   $('#newMapSave').hide();
-// }
+jQuery(document).ready(function(){
+  $('#saveMarkerInfo').on('click', function(event){
+    $.ajax({
+      type: 'POST',
+      data: $('#markerInfo').serialize(),
+      url: '/api/maps/new',
+      success: function(data) {
+        var markerInfo = $('#markerInfo').serialize();
+        console.log(markerInfo)
+      }
+    });
+  });
+});

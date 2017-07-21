@@ -2,9 +2,21 @@
 <html>
   <head>
 
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="/styles/create_map.css" type="text/css" />
 
-     <script type="text/javascript" src="/scripts/create_map.js"></script>
+    <script type="text/javascript" src="/scripts/create_map.js"></script>
 
     <title>Create A Map</title>
     <style>
@@ -13,22 +25,56 @@
     </style>
   </head>
   <body>
+  <% include partials/_header.ejs %>
   <div id="map"></div>
-    <form action="/api/maps/new" method="POST">
-      <label for="email">Name:</label>
-      <input id="name" type="text" name="name">
-      <label for="username">Description:</label>
-      <input id="description" type="text" name="description">
-      <label for="password">Image:</label>
-      <input id="image_url" type="text" name="image_url">
-      <input type="submit" value="Sign Up">
-    </form>
-    <div id="floating-panel">
-      <input onclick="clearMarkers();" type=button value="Hide Markers">
-      <input onclick="showMarkers();" type=button value="Show All Markers">
-      <input onclick="deleteMarkers();" type=button value="Delete Markers">
-    </div>
-    <div id="map"></div>
+
+  <form action="/api/maps/new" method="POST">
+    <label for="email">Name:</label>
+    <input id="name" type="text" name="name">
+    <label for="username">Description:</label>
+    <input id="description" type="text" name="description">
+    <label for="password">Image:</label>
+    <input id="image_url" type="text" name="image_url">
+    <input type="submit" value="Save Map">
+  </form>
+
+  <div id="floating-panel">
+    <input onclick="clearMarkers();" type=button value="Hide Markers">
+    <input onclick="showMarkers();" type=button value="Show All Markers">
+    <input onclick="deleteMarkers();" type=button value="Delete Markers">
+  </div>
+
+  <form id='markerInfo'>
+    <table>
+      <tr>
+        <td>Title:</td>
+        <td>
+          <input type='text' class='title' name='name'/>
+        </td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td>
+          <input type='text' class='description' name='description'/>
+        </td>
+      </tr>
+      <tr>
+        <td>Image:</td>
+        <td>
+          <input type='text' class='image_url' name='image'/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input id='saveMarkerInfo' type='button' value='Save'/>
+        </td>
+      </tr>
+      <input id='markerLat' type='hidden' name='latitude'>
+      <input id='markerLng' type='hidden' name='longitude'>
+
+    </table>
+  </form>
+  <div id="message">Location saved</div>
     <script>
       var map;
       var marker;
@@ -42,9 +88,9 @@
           zoom: 13
         });
 
-        // infowindow = new google.maps.InfoWindow({
-        //   content: document.getElementById('newMapInfo')
-        // });
+        infowindow = new google.maps.InfoWindow({
+          content: document.getElementById('markerInfo')
+        });
 
         map.addListener('click', function(event) {
           addMarker(event.latLng);
@@ -59,9 +105,11 @@
         });
         markers.push(marker);
 
-        // google.maps.event.addListener(marker, 'click', function() {
-        //   infowindow.open(map, marker);
-        // });
+        google.maps.event.addListener(marker, 'click', function() {
+          $('#markerLat').val(location.lat);
+          $('#markerLng').val(location.lng);
+          infowindow.open(map, marker);
+        });
       }
 
       // Sets the map on all markers in the array.
@@ -89,5 +137,6 @@
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
     </script>
+     <% include partials/_footer.ejs %>
   </body>
 </html>

@@ -1,14 +1,17 @@
-body {
-  background-color: #EEE;
+$brand-primary: #244751;
+$brand-light-divider: #eeeeee;
+$brand-light-text: #888888;
+$single-column-form-width: 80%;
 
+body {
   h1 {
-    color: #244751;
+    color: $brand-primary;
   }
 }
 
 footer {
-  border-top: 1px solid #eee;
-  color: #888;
+  border-top: 1px solid $brand-light-divider;
+  color: $brand-light-text;
   font-size: 0.8em;
   margin-top: 20px;
   padding: 20px 0;
@@ -19,7 +22,18 @@ html {
   overflow-y: scroll;
 }
 
+.container.form-container {
+  width: $single-column-form-width;
+}
+
 .navbar-brand.index-link {
-  color: #244751;
+  color: $brand-primary;
   font-size: 3em;
+}
+
+.navbar-right.authentication-container {
+  display: inline-block;
+  float: right;
+  margin-right: 15px;
+  padding-right: 15px;
 }

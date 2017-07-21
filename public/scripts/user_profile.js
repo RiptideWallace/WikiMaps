@@ -1,5 +1,4 @@
-$(() => {
-
+jQuery(document).ready(function(){
   var userProfileId = $("#user-profile-id").val();
   $.ajax({
     method: "GET",

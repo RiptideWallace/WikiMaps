@@ -1,5 +1,4 @@
-$(() => {
-
+jQuery(document).ready(function(){
   var mapId = $("#map-id").val();
   $.ajax({
     method: "GET",

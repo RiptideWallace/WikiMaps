@@ -20,51 +20,64 @@
   <% include partials/_header.ejs %>
   <div id="map"></div>
 
-  <form action="/maps/new" method="POST">
-    <label for="name">Name:</label>
-    <input id="name" type="text" name="name">
-    <label for="description">Description:</label>
-    <input id="description" type="text" name="description">
-    <label for="image">Image:</label>
-    <input id="image_url" type="text" name="image_url">
-    <input type="submit" value="Save Map">
-  </form>
+  <div class="container">
+    <div class="container form-container">
+      <h2>Add a New Map</h2>
+      <form action="/maps/new" method="POST">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input id="name" class="form-control" type="text" name="name">
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input id="description" class="form-control" type="text" name="description">
+        </div>
+        <div class="form-group">
+          <label for="image">Image:</label>
+          <input id="image_url" class="form-control" type="text" name="image_url">
+        </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Save Map">
+      </form>
+    </div>
 
-  <div id="floating-panel">
-    <input onclick="clearMarkers();" type=button value="Hide Markers">
-    <input onclick="showMarkers();" type=button value="Show All Markers">
-    <input onclick="deleteMarkers(), $('#markerInfo').empty();" type=button value="Delete Markers">
+    <div id="floating-panel">
+      <input onclick="clearMarkers();" type="button" value="Hide Markers">
+      <input onclick="showMarkers();" type="button" value="Show All Markers">
+      <input onclick="deleteMarkers(), $('#markerInfo').empty();" type=button value="Delete Markers">
+    </div>
+
+
+    <form action="/api/markers/new" method="POST" id='markerInfo'>
+      <table>
+        <tr>
+          <td>Title:</td>
+          <td>
+            <input type='text' class='title' name='title'/>
+          </td>
+        </tr>
+        <tr>
+          <td>Outline:</td>
+          <td>
+            <input type='text' class='outline' name='outline'/>
+          </td>
+        </tr>
+        <tr>
+          <td>Link:</td>
+          <td>
+            <input type='text' class='link' name='link'/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id='saveMarkerInfo' type='button' value='Save'/>
+          </td>
+        </tr>
+        <input id='markerLng' type='hidden' name='longitude'>
+        <input id='markerLat' type='hidden' name='latitude'>
+      </table>
+    </form>
+
   </div>
-
-  <form action="/api/markers/new" method="POST" id='markerInfo'>
-    <table>
-      <tr>
-        <td>Title:</td>
-        <td>
-          <input type='text' class='title' name='title'/>
-        </td>
-      </tr>
-      <tr>
-        <td>Outline:</td>
-        <td>
-          <input type='text' class='outline' name='outline'/>
-        </td>
-      </tr>
-      <tr>
-        <td>Link:</td>
-        <td>
-          <input type='text' class='link' name='link'/>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input id='saveMarkerInfo' type='button' value='Save'/>
-        </td>
-      </tr>
-      <input id='markerLng' type='hidden' name='longitude'>
-      <input id='markerLat' type='hidden' name='latitude'>
-    </table>
-  </form>
   <!-- <div id='saveMessage'>Location Saved</div> -->
     <script>
       var googleMap;

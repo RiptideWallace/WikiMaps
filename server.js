@@ -54,10 +54,6 @@ app.use("/maps", mapRoutes(knex));
 app.use("/users", userRoutes(knex));
 app.use("/api/markers", markerRoutes(knex));
 
-
-
-
-
 // Home page
 app.get("/", (req, res) => {
   res.render("index");

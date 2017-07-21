@@ -1,5 +1,4 @@
 jQuery(document).ready(function(){
-  $('#markerInfo');
   $('#saveMarkerInfo').on('click', function(event){
     $.ajax({
       type: 'POST',

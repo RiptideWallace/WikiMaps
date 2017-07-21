@@ -65,7 +65,7 @@
   </form>
   <!-- <div id='saveMessage'>Location Saved</div> -->
     <script>
-      var map;
+      var googleMap;
       var marker;
       var markers = [];
       var infoWindow;
@@ -74,7 +74,7 @@
       //The initial map that is shown on load
       function initMap() {
         var victoria = {lng: -123.3656, lat: 48.4284};
-        map = new google.maps.Map(document.getElementById('map'), {
+        googleMap = new google.maps.Map(document.getElementById('map'), {
           center: victoria,
           zoom: 13
         });
@@ -89,7 +89,7 @@
         })
 
         //Adds a marker when a point on the map is clicked
-        map.addListener('click', function(event) {
+        googleMap.addListener('click', function(event) {
           addMarker(event.latLng);
         });
 
@@ -98,21 +98,21 @@
       function addMarker(location) {
         var marker = new google.maps.Marker({
           position: location,
-          map: map
+          map: googleMap
         });
         markers.push(marker);
 
         google.maps.event.addListener(marker, 'click', function() {
           $('#markerLng').val(location.lng);
           $('#markerLat').val(location.lat);
-          infowindow.open(map, marker);
+          infowindow.open(googleMap, marker);
         });
       }
 
       // Sets the map on all markers in the array.
-      function setMapOnAll(map) {
+      function setMapOnAll(setMap) {
         for (var i = 0; i < markers.length; i++) {
-          markers[i].setMap(map);
+          markers[i].setMap(setMap);
         }
       }
 
@@ -123,7 +123,7 @@
 
       // Shows any markers currently in the array.
       function showMarkers() {
-        setMapOnAll(map);
+        setMapOnAll(googleMap);
       }
 
       // Deletes all markers in the array by removing references to them.

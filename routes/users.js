@@ -6,11 +6,14 @@ const bcrypt = require('bcrypt');
 
 module.exports = (knex) => {
 
+// SELECT maps.name, maps.description FROM maps JOIN users ON (maps.user_id=users.id) WHERE users.id = 1;
+
   router.get("/:id", (req, res) => {
     knex
-      .select("id", "name")
-      .from('users')
-      .where({id: req.params.id})
+      .select("maps.name", "maps.description", "maps.image_url")
+      .from('maps')
+      .leftJoin('users', 'maps.user_id', 'users.id')
+      .where({user_id: req.params.id})
       .then((results) => {
         res.json(results);
       })

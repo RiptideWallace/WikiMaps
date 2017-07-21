@@ -1,7 +1,9 @@
 $(() => {
+
+  var userProfileId = $("#user-profile-id").val();
   $.ajax({
     method: "GET",
-    url: "/maps"
+    url: "/users/" + userProfileId,
   }).done((maps) => {
     for(map of maps) {
       ($("<div>").addClass("col-xs-12 col-sm-4")
@@ -11,4 +13,9 @@ $(() => {
         .appendTo($("body").find(".maps-container"));
     }
   });
+//   }).fail((error) => {
+//     console.log(error)
+//     $(".userMaps").empty().text(error.responseText);
+//   });
 });
+

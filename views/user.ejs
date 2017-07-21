@@ -4,8 +4,8 @@
 <html lang="en">
   <head>
     <title>WikiMaps: User Profile</title>
-
     <% include partials/_head.ejs %>
+    <script type="text/javascript" src="/scripts/user_profile.js"></script>
 
   </head>
   <body>
@@ -13,6 +13,7 @@
     <% include partials/_header.ejs %>
 
     <div class="container main-container">
+      <input type="hidden" id="user-profile-id" value="<%=user.id%>">
       <h2><%= user.name %></h2>
       <p>This page shows a user's profile to fulfill the following User Story:</p>
       <ul>
@@ -23,6 +24,10 @@
           </ul>
         </li>
       </ul>
+    </div>
+
+    <div class="container main-container">
+      <div class="maps-container"></div>
     </div>
 
     <% include partials/_footer.ejs %>

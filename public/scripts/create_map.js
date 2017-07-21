@@ -3,7 +3,7 @@ jQuery(document).ready(function(){
     $.ajax({
       type: 'POST',
       data: $('#markerInfo').serialize(),
-      url: '/api/maps/new',
+      url: '/maps/new',
       success: function(data) {
         var markerInfo = $('#markerInfo').serialize();
         console.log(markerInfo)

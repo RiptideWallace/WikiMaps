@@ -14,6 +14,18 @@ module.exports = (knex) => {
     });
   });
 
+  router.post("/new", (req, res) => {
+    knex('maps')
+      .insert({name: req.body.name, description: req.body.description, image_url: req.body.image_url})
+      .then((results) => {
+        res.redirect("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).send("New Map Error");
+      });
+  });
+
   router.get("/:id", (req, res) => {
     knex
       .select("*")
@@ -27,16 +39,11 @@ module.exports = (knex) => {
       });
   });
 
-  router.post("/new", (req, res) => {
-    knex('maps')
-      .insert({name: req.body.name, description: req.body.description, image_url: req.body.image_url})
-      .then((results) => {
-        res.redirect("/");
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(400).send("New Map Error");
-      });
+  router.get("/:id/show", (req, res) => {
+    const templateVars = {
+      id: req.params.id
+    }
+    res.render("maps_show", templateVars);
   });
 
   return router;

@@ -48,7 +48,7 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/maps", mapRoutes(knex));
+app.use("/maps", mapRoutes(knex));
 app.use("/api/users", userRoutes(knex));
 
 // Home page
@@ -86,12 +86,12 @@ app.get("/new", (req, res) => {
 });
 
 // A page for rendering a specific map
-app.get("/:id", (req, res) => {
-  const templateVars = {
-    id: req.params.id
-  }
-  res.render("maps_show", templateVars);
-});
+// app.get("/:id", (req, res) => {
+//   const templateVars = {
+//     id: req.params.id
+//   }
+//   res.render("maps_show", templateVars);
+// });
 
 
 

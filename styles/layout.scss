@@ -2,7 +2,9 @@ $brand-primary: #244751;
 $brand-highlight: #397182;
 $brand-highlight-background: #e5f9ff;
 $brand-light-divider: #eeeeee;
+$brand-dark-divider: #888888;
 $brand-light-text: #888888;
+$map-background: #e8e8e8;
 $single-column-form-width: 80%;
 
 body {
@@ -32,6 +34,24 @@ html {
   display: inline-block;
   float: right;
   padding-right: 15px;
+}
+
+.map-container {
+  background: $map-background;
+  border: 5px solid #fff;
+  border-radius: 5px;
+  h2 {
+    margin-top: 5px;
+    word-break: break-all
+  }
+  img {
+    border: 3px solid $brand-dark-divider;
+  }
+  margin-bottom: 10px;
+  p {
+    word-break: break-all;
+  }
+  padding: 10px 0 15px 0;
 }
 
 .navbar-brand.brand-index-link {

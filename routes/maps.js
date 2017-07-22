@@ -34,6 +34,19 @@ module.exports = (knex) => {
     res.redirect("/login");
   });
 
+  router.get("/likes/:id", (req, res) => {
+    knex
+      .select("*")
+      .from('favourites')
+      .where({map_id: req.params.id})
+      .then((results) => {
+        res.json({len: results.length});
+      })
+      .catch((err) => {
+        res.status(404).send("NO likes :(");
+      });
+  });
+
   router.get("/:mapId", (req, res) => {
     knex
       .select("*")

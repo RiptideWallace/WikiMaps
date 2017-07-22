@@ -19,6 +19,19 @@ module.exports = (knex) => {
         res.status(404).send("This User Does Not Exist");
       });
   });
+  router.get("/:id/favourites", (req, res) => {
+    knex
+      .select("*")
+      .from('favourites')
+      .leftJoin('maps', 'favourites.map_id', 'maps.id')
+      .where("favourites.user_id", req.params.id)
+      .then((results) => {
+        res.json(results);
+      })
+      .catch((err) => {
+        res.status(404).send("This User's Map Does Not Exist");
+      });
+  });
   router.get("/:id/show", (req, res) => {
     knex('users')
       .where({id: req.params.id})

@@ -14,15 +14,16 @@
 
     <div class="container main-container">
       <input type="hidden" id="user-profile-id" value="<%=user.id%>">
-      <h1>Welcome to <%= user.name %>'s profile</h1>
-    </div>
-    <h2>Maps that <%=user.name%> has contributed to:</h2>
-    <div class="container main-container">
-      <div class="maps-container"></div>
-    </div>
-    <h2>Maps that <%=user.name%> has favourited:</h2>
-    <div class="container fav-main-container">
-      <div class="fav-maps-container"></div>
+      <h1><%= user.name %>'s profile</h1>
+      <h2>Maps that <span class="user-name-highlight"><%=user.name%></span> has contributed to:</h2>
+      <div class="container main-container">
+        <div class="none-yet"></div>
+        <div class="maps-container"></div>
+      </div>
+      <h2>Maps that <span class="user-name-highlight"><%=user.name%></span> has favourited:</h2>
+      <div class="container fav-main-container">
+        <div class="fav-maps-container"></div>
+      </div>
     </div>
 
     <% include partials/_footer.ejs %>

@@ -1,4 +1,6 @@
 $brand-primary: #244751;
+$brand-highlight: #397182;
+$brand-highlight-background: #e5f9ff;
 $brand-light-divider: #eeeeee;
 $brand-light-text: #888888;
 $single-column-form-width: 80%;
@@ -35,6 +37,13 @@ html {
 .navbar-brand.brand-index-link {
   color: $brand-primary;
   font-size: 3em;
+}
+
+.user-name-highlight {
+  background-color: $brand-highlight-background;
+  border-radius: 5px;
+  color: $brand-highlight;
+  padding: 0 5px;
 }
 
 #wiki-maps-logo {

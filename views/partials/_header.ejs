@@ -2,16 +2,22 @@
 
     <header class="container page-header">
       <nav class="navbar navbar-static-top">
-        <img class="navbar-left" id="wiki-maps-logo" src="/images/WM Logo.png" alt="WikiMaps Logo">
-        <a class="navbar-brand index-link" href="/">WikiMaps</a>
-          <div class="navbar-right authentication-container">
-          <% if (userId) { %>
-            <form action="/logout" method="POST">
-              <button type="submit" class="btn btn-warning">Logout</button>
-            </form>
-          <% } else { %>
-            <p class="navbar-text navbar-right"><a href="/login">Login</a> or <a href="/register">Register</a></p>
-          <% } %>
-          </div>
+        <div>
+          <a href="/">
+            <img class="" id="wiki-maps-logo" src="/images/WikiMaps-logo.png" alt="WikiMaps Logo">
+          </a>
+          <a class="navbar-brand brand-index-link" href="/">
+            WikiMaps
+          </a>
+        </div>
+        <div class="navbar-right authentication-container">
+        <% if (userId) { %>
+          <form action="/logout" method="POST">
+            <button type="submit" class="btn btn-warning">Logout</button>
+          </form>
+        <% } else { %>
+          <p class="navbar-text navbar-right"><a href="/login">Login</a> or <a href="/register">Register</a></p>
+        <% } %>
+        </div>
       </nav>
     </header>

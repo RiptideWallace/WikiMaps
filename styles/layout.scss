@@ -26,19 +26,28 @@ html {
   width: $single-column-form-width;
 }
 
-.navbar-brand.index-link {
+.authentication-container {
+  display: inline-block;
+  float: right;
+  padding-right: 15px;
+}
+
+.navbar-brand.brand-index-link {
   color: $brand-primary;
   font-size: 3em;
 }
 
-.navbar-right.authentication-container {
-  display: inline-block;
-  float: right;
-  margin-right: 15px;
-  padding-right: 15px;
+#wiki-maps-logo {
+  float: left;
+  padding-top: 0.5em;
+  width: 3em;
 }
 
-#wiki-maps-logo {
-  width: 3em;
-  padding-top: 0.5em;
+@media screen and (max-width: 400px) {
+  .navbar-brand.brand-index-link {
+    font-size: 2.3em;
+  }
+  #wiki-maps-logo {
+    width: 2.3em;
+  }
 }

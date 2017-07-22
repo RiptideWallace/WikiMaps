@@ -37,21 +37,27 @@ html {
 }
 
 .map-container {
+  a:link {
+    text-decoration: none;
+  }
+  a:visited {
+    text-decoration: none;
+  }
   background: $map-background;
-  border: 5px solid #fff;
-  border-radius: 5px;
   h2 {
+    color: #000;
     margin-top: 5px;
-    word-break: break-all
+    word-break: break-all;
+    text-decoration: none;
   }
   img {
     border: 3px solid $brand-dark-divider;
   }
-  margin-bottom: 10px;
+  margin: 0 -10px 20px -10px;
   p {
-    word-break: break-all;
+    color: $brand-primary;
   }
-  padding: 10px 0 15px 0;
+  padding: 5px 15px 15px 15px;
 }
 
 .navbar-brand.brand-index-link {

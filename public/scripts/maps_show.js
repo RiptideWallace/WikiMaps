@@ -14,4 +14,6 @@ $(() => {
     console.log(error)
     $("#map").empty().text(error.responseText);
   })
+
+
 });

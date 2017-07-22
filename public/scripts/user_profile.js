@@ -7,10 +7,15 @@ jQuery(document).ready(function(){
   }).done((maps) => {
     for(map of maps) {
       ($("<div>").addClass("col-xs-12 col-sm-4")
-        .append($("<h2>").text(map.name))
-        .append($("<p>").text(map.description))
-        .append($("<img>").attr("src", map.image_url).addClass("img-responsive")))
-        .appendTo($("body").find(".maps-container"));
+        .append($("<a>").attr("href", "#")
+          .append($("<div>").addClass("map-container")
+            .append($("<h2>").text(map.name))
+            .append($("<p>").text(map.description))
+            .append($("<img>").attr("src", map.image_url).addClass("img-responsive center-block"))
+          )
+        )
+      )
+      .appendTo($("body").find(".maps-container"));
     }
   }).fail((error) => {
     console.log(error)
@@ -21,12 +26,20 @@ jQuery(document).ready(function(){
     method: "GET",
     url: "/users/" + userProfileId + "/favourites",
   }).done((maps) => {
+    if (!maps) {
+      ($("<p>").text("None yet!")).appendTo($("body").find("fav-maps-container"));
+    }
     for(map of maps) {
       ($("<div>").addClass("col-xs-12 col-sm-4")
-        .append($("<h2>").text(map.name))
-        .append($("<p>").text(map.description))
-        .append($("<img>").attr("src", map.image_url).addClass("img-responsive")))
-        .appendTo($("body").find(".fav-maps-container"));
+        .append($("<a>").attr("href", "#")
+          .append($("<div>").addClass("map-container")
+            .append($("<h2>").text(map.name))
+            .append($("<p>").text(map.description))
+            .append($("<img>").attr("src", map.image_url).addClass("img-responsive center-block"))
+          )
+        )
+      )
+      .appendTo($("body").find(".fav-maps-container"));
     }
   }).fail((error) => {
     console.log(error)
@@ -34,4 +47,3 @@ jQuery(document).ready(function(){
   });
 
 });
-

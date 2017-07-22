@@ -1,22 +1,23 @@
 <!-- views/maps_show.ejs -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <title>WikiMaps: Show Map</title>
+
+    <% include partials/_head.ejs %>
+
     <style>
        #map {
         height: 400px;
         width: 100%;
        }
     </style>
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/maps_show.js"></script>
   </head>
   <body>
+    <% include partials/_header.ejs %>
     <input type="hidden" id="map-id" value="<%=mapId%>">
     <div id="map-title">
     </div>
@@ -30,9 +31,7 @@
             zoom: 13,
             center: victoria
           });
-
           google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
-
             $.ajax({
             method: "GET",
             url: "/maps/"+ $('#map-id').val() +"/markers",
@@ -49,15 +48,12 @@
           $("#map").empty().text(error.responseText);
         });
       });
-
           function addMarker(location) {
             var marker = new google.maps.Marker({
               position: location,
               map: showMap
             })
           }
-
-
         }
       </script>
       <script async defer

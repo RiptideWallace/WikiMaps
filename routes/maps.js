@@ -27,7 +27,11 @@ module.exports = (knex) => {
   });
 
   router.get("/new", (req, res) => {
-    res.render("create_map");
+    if (req.session.userId) {
+      res.render("create_map");
+      return;
+    }
+    res.redirect("/login");
   });
 
   router.get("/:mapId", (req, res) => {

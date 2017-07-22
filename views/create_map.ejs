@@ -52,19 +52,19 @@
         <tr>
           <td>Title:</td>
           <td>
-            <input type='text' class='title' name='title'/>
+            <input type='text' class='infoTitle' name='title'/>
           </td>
         </tr>
         <tr>
           <td>Outline:</td>
           <td>
-            <input type='text' class='outline' name='outline'/>
+            <input type='text' class='infoOutline' name='outline'/>
           </td>
         </tr>
         <tr>
           <td>Link:</td>
           <td>
-            <input type='text' class='link' name='link'/>
+            <input type='text' class='infoLink' name='link'/>
           </td>
         </tr>
         <tr>
@@ -78,7 +78,7 @@
     </form>
 
   </div>
-  <!-- <div id='saveMessage'>Location Saved</div> -->
+  <div id='saveMessage'>Location Saved</div>
     <script>
       var googleMap;
       var marker;
@@ -107,8 +107,8 @@
         googleMap.addListener('click', function(event) {
           addMarker(event.latLng);
         });
-
       }
+
       // Adds a marker to the map and push to the array.
       function addMarker(location) {
         var marker = new google.maps.Marker({
@@ -120,6 +120,9 @@
         google.maps.event.addListener(marker, 'click', function() {
           $('#markerLng').val(location.lng);
           $('#markerLat').val(location.lat);
+          $('.infoTitle').val("");
+          $('.infoOutline').val("");
+          $('.infoLink').val("");
           infowindow.open(googleMap, marker);
         });
       }

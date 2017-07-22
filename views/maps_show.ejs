@@ -23,7 +23,22 @@
     </div>
     <div>
       <h3>My Google Maps Demo</h3>
-      <div id="map"></div>
+    <div id="map"></div>
+    <form action="/api/markers/new" method="POST" id='showInfo'>
+      <table>
+        <tr>
+          <td class="titleInput">Title:</td>
+        </tr>
+        <tr>
+          <td class="outlineInput">Outline:</td>
+        </tr>
+        <tr>
+          <td class="linkInput">Link:</td>
+        </tr>
+        <tr>
+        </tr>
+      </table>
+    </form>
       <script>
         function initMap() {
           var victoria = {lat: 48.4284, lng: -123.3656};
@@ -31,6 +46,7 @@
             zoom: 13,
             center: victoria
           });
+
           google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
             $.ajax({
             method: "GET",
@@ -52,9 +68,18 @@
             var marker = new google.maps.Marker({
               position: location,
               map: showMap
-            })
+            });
           }
+
+        var showWindow = new google.maps.InfoWindow({
+            content: getElementByID('showInfo')
+          });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(showMap, marker)
+          });
         }
+
       </script>
       <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">

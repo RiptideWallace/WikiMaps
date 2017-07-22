@@ -27,24 +27,31 @@
     <form action="/api/markers/new" method="POST" id='showInfo'>
       <table>
         <tr>
-          <td class="titleInput">Title:</td>
+          <td class="titleInput"></td>
         </tr>
         <tr>
-          <td class="outlineInput">Outline:</td>
+          <td class="outlineInput"></td>
         </tr>
         <tr>
-          <td class="linkInput">Link:</td>
+          <td class="linkInput"></td>
         </tr>
         <tr>
         </tr>
       </table>
     </form>
       <script>
+        var showInfoWindow;
+        var showMap;
+
         function initMap() {
           var victoria = {lat: 48.4284, lng: -123.3656};
-          var showMap = new google.maps.Map(document.getElementById('map'), {
+          showMap = new google.maps.Map(document.getElementById('map'), {
             zoom: 13,
             center: victoria
+          });
+
+          showInfoWindow = new google.maps.InfoWindow({
+          content: document.getElementById('showInfo')
           });
 
           google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
@@ -62,24 +69,31 @@
           }).fail((error) => {
           console.log(error)
           $("#map").empty().text(error.responseText);
+          });
         });
-      });
           function addMarker(location) {
             var marker = new google.maps.Marker({
               position: location,
               map: showMap
             });
-          }
-
-        var showWindow = new google.maps.InfoWindow({
-            content: getElementByID('showInfo')
-          });
-
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(showMap, marker)
-          });
+            google.maps.event.addListener(marker, 'click', function() {
+              $.ajax({
+                method: "GET",
+                url:"/maps/" + $('#map-id').val() + "/markers"
+              }).done((markers) => {
+                markers.forEach(function(marker) {
+                  ($("#showInfo")
+                    .append($("<td>").text(marker.title))
+                    .append($("<td>").text(marker.outline))
+                    .append($("<td>").text(marker.link))
+                    .appendTo($("#showInfo"))
+                  )
+                })
+              })
+            })
+              showInfoWindow.open(showMap, marker);
+          };
         }
-
       </script>
       <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">

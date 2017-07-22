@@ -1,4 +1,4 @@
-$(() => {
+jQuery(document).ready(function(){
   $.ajax({
     method: "GET",
     url: "/maps"

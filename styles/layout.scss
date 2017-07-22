@@ -1,11 +1,27 @@
 $brand-primary: #244751;
 $brand-highlight: #397182;
 $brand-highlight-background: #e5f9ff;
-$brand-light-divider: #eeeeee;
-$brand-dark-divider: #888888;
-$brand-light-text: #888888;
+$brand-divider-light: #eeeeee;
+$brand-divider-dark: #888888;
+$brand-text-light: #888888;
 $map-background: #e8e8e8;
 $single-column-form-width: 80%;
+
+a:active {
+  text-decoration-line: none;
+}
+
+a:hover {
+  text-decoration-line: none;
+}
+
+a:link {
+  text-decoration-line: none;
+}
+
+a:visited {
+  text-decoration-line: none;
+}
 
 body {
   h1 {
@@ -14,8 +30,8 @@ body {
 }
 
 footer {
-  border-top: 1px solid $brand-light-divider;
-  color: $brand-light-text;
+  border-top: 1px solid $brand-divider-light;
+  color: $brand-text-light;
   font-size: 0.8em;
   margin-top: 20px;
   padding: 20px 0;
@@ -48,36 +64,26 @@ html {
 }
 
 .map-container {
-  a:active {
-    text-decoration: none;
-  }
-  a:link {
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: none;
-  }
-  a:visited {
-    text-decoration: none;
-  }
   background: $map-background;
   h2 {
     color: #000;
     margin-top: 5px;
     word-break: break-all;
-    text-decoration: none;
-  }
-  h2:hover {
-    text-decoration: none;
   }
   img {
-    border: 3px solid $brand-dark-divider;
+    border: 3px solid $brand-divider-dark;
   }
   margin: 0 -10px 20px -10px;
   p {
     color: $brand-primary;
   }
   padding: 5px 15px 15px 15px;
+}
+
+.map-container:hover {
+  -webkit-box-shadow: 0px 0px 10px 5px $brand-highlight-background;
+  -moz-box-shadow: 0px 0px 10px 5px $brand-highlight-background;
+  box-shadow: 0px 0px 10px 5px $brand-highlight-background;
 }
 
 .navbar-brand.brand-index-link {

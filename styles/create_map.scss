@@ -1,24 +1,19 @@
 #map {
-    height: 460px;
-    width: 100%;
+  height: 460px;
+  width: 100%;
 }
 
 #floating-panel {
-    position: absolute;
-    top: 150px;
-    left: 25%;
-    z-index: 5;
-    background-color: #fff;
-    padding: 5px;
-    border: 1px solid #999;
-    text-align: center;
-    font-family: 'Roboto','sans-serif';
-    line-height: 30px;
-    padding-left: 10px;
+  background-color: #fff;
+  border: 1px solid #999;
+  left: 10px;
+  line-height: 30px;
+  padding: 5px;
+  position: absolute;
+  top: 450px;
+  z-index: 5;
 }
 
 #markerInfo {
   display: none;
 }
-
-

@@ -1,18 +1,20 @@
 jQuery(document).ready(function(){
 
   var userProfileId = $("#user-profile-id").val();
-  var getLikes = function(input) {
-    $.ajax({
-      method: "GET",
-      url: "/maps/likes/" + input,
-      dataType: 'json',
-      success: function(e) {
-        debugger;
-        return(e);
-        debugger;
-      }
-    });
-  }
+
+  // function getLikes(input) {
+  //   $.ajax({
+  //     method: "GET",
+  //     url: "/maps/likes/1",
+  //     dataType: 'json',
+  //     success: function(e) {
+  //       console.log(e);
+  //     },
+  //     error: function() {
+  //       console.log("error");
+  //     }
+  //   });
+  // }
 
   $.ajax({
     method: "GET",
@@ -25,8 +27,8 @@ jQuery(document).ready(function(){
             .append($("<h2>").text(map.name))
             .append($("<p>").text(map.description))
             .append($("<img>").attr("src", map.image_url).addClass("img-responsive center-block"))
-            .append($("<h3>").text(function() { return "Likes " + (map.id); })) //where map.id, replace with getLikes(map.id) once working properly
-            .append($("<a href='/maps/" + map.id + "/show'><span class='glyphicon glyphicon-heart-empty'></a>"))
+            // .append($("<h3>").text(function() { return "Likes " + (map.id); })) //where map.id, replace with getLikes(map.id) once working properly
+            // .append($("<a href='/maps/" + map.id + "/show'><span class='glyphicon glyphicon-heart-empty'></a>"))
           )
         )
       )
@@ -51,8 +53,8 @@ jQuery(document).ready(function(){
             .append($("<h2>").text(map.name))
             .append($("<p>").text(map.description))
             .append($("<img>").attr("src", map.image_url).addClass("img-responsive center-block"))
-            .append($("<h3>").text(function() { return "Likes " + (map.id); })) //where map.id, replace with getLikes(map.id) once working properly
-            .append($("<a href='/maps/" + map.id + "/show'><span class='glyphicon glyphicon-heart-empty'></a>"))
+            // .append($("<h3>").text(function() { return "Likes " + (map.id); })) //where map.id, replace with getLikes(map.id) once working properly
+            // .append($("<a href='/maps/" + map.id + "/show'><span class='glyphicon glyphicon-heart-empty'></a>"))
           )
         )
       )

@@ -19,9 +19,17 @@
   <body>
   <% include partials/_header.ejs %>
     <input type="hidden" id="map-id" value="<%=mapId%>">
-    <div id="map-title"></div>
-  <div>
-    <h3 id="map-greeting-info"></h3>
+    <div id="map-title">
+    </div>
+    <div>
+      <h3 id="map-greeting-info"></h3>
+    <% if (userId) { %>
+    <div>
+      <form action="/maps/likes/:id" method="POST">
+        <button type="submit" class="btn btn-block btn-primary"><span class='glyphicon glyphicon-heart-empty'> &nbsp Favourite this map</button>
+      </form>
+    </div>
+    <% } %>
     <div id="map"></div>
     <form action="/api/markers/new" method="POST" id='showInfo'>
       <table>
@@ -95,10 +103,11 @@
           showInfoWindow.open(showMap, marker);
         };
       }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
-    </script>
-  </div>
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
+      </script>
+    </div>
+    <% include partials/_footer.ejs %>
   </body>
 </html>

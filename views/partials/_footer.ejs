@@ -2,6 +2,9 @@
 
     <footer class="container">
       <div class="footer-nav">
+
+      <% if (userId) { %>
+
         <div class="col-xs-12 col-sm-3 footer-link">
           <a href="/" title="WikiMaps Home - View All Maps">
             <span class="glyphicon glyphicon-home"></span>
@@ -28,6 +31,15 @@
             </button>
           </form>
         </div>
+
+      <% } else { %>
+
+        <div class="col-xs-12 footer-link">
+          <p><a href="/login">Login</a> or <a href="/register">Register</a></p>
+        </div>
+
+      <% } %>
+
       </div>
 
       <div class="col-xs-12 footer-copyright">

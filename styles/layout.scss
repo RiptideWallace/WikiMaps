@@ -60,6 +60,10 @@ html {
 .authentication-container {
   display: inline-block;
   float: right;
+  li {
+    list-style: none;
+    padding-bottom: 5px;
+  }
   padding-right: 15px;
 }
 
@@ -89,6 +93,17 @@ html {
 .navbar-brand.brand-index-link {
   color: $brand-primary;
   font-size: 3em;
+}
+
+.navbar-menu-container {
+  li {
+    list-style: none;
+    padding-bottom: 5px;
+  }
+  padding: 0 10px;
+  ul {
+    padding-left: 0px;
+  }
 }
 
 .user-name-highlight {

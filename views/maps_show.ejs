@@ -17,19 +17,27 @@
     <script type="text/javascript" src="/scripts/maps_show.js"></script>
   </head>
   <body>
+
   <% include partials/_header.ejs %>
+
+  <div class="container">
     <input type="hidden" id="map-id" value="<%=mapId%>">
     <div id="map-title">
     </div>
-    <div>
-      <h3 id="map-greeting-info"></h3>
+    <div id="map-greeting-info">
+    </div>
     <% if (userId) { %>
     <div>
       <form action="/maps/likes/:id" method="POST">
-        <button type="submit" class="btn btn-block btn-primary"><span class='glyphicon glyphicon-heart-empty'> &nbsp Favourite this map</button>
+        <button type="submit" class="btn btn-block btn-primary">
+          <span class='glyphicon glyphicon-heart-empty'></span>
+          <span>&nbsp Favourite this map</span>
+        </button>
       </form>
     </div>
     <% } %>
+  </div>
+
     <div id="map"></div>
     <form action="/api/markers/new" method="POST" id='showInfo'>
       <table>

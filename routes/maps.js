@@ -63,7 +63,7 @@ module.exports = (knex) => {
   router.get("/:mapId/show", (req, res) => {
     const templateVars = {
       mapId: req.params.mapId,
-      //markerId: req.params.markerId
+      markerId: req.params.markerId
     }
     res.render("maps_show", templateVars);
   });

@@ -77,9 +77,12 @@
               map: showMap
             });
             google.maps.event.addListener(marker, 'click', function() {
+              var test = marker
+
+
               $.ajax({
                 method: "GET",
-                url:"/maps/" + $('#map-id').val() + "/markers"
+                url:"/maps/" + $('#map-id').val() + "/markers/",
               }).done((markers) => {
                 markers.forEach(function(marker) {
                   ($("#showInfo")

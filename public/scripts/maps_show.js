@@ -5,9 +5,8 @@ jQuery(document).ready(function(){
     url: "/maps/" + mapId,
   }).done((maps) => {
     for(map of maps) {
-      ($("#map-title").append($("<h2>").text(map.name))
-        .append($("<p>").text(map.description))
-        ).appendTo($("#map-greeting-info"));
+      ($(".map-details-container").append($("<h2>").addClass("map-title").text(map.name))
+        .append($("<p>").addClass("map-greeting-info").text(map.description)))
     }
   }).fail((error) => {
     console.log(error)

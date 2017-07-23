@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
   }).done((maps) => {
     for(map of maps) {
       ($("<div>").addClass("col-xs-12 col-sm-4")
-        .append($("<a>").attr("href", "#")
+        .append($("<a href='/maps/" + map.id + "/show'>")
           .append($("<div>").addClass("map-container")
             .append($("<h2>").text(map.name))
             .append($("<p>").text(map.description))

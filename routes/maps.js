@@ -47,6 +47,18 @@ module.exports = (knex) => {
       });
   });
 
+  router.post("/likes/:mapId/:userId", (req, res) => {
+    knex('favourites')
+    .insert({map_id: req.params.mapId, user_id: req.params.userId})
+    .then((results) => {
+        res.redirect(`/users/${req.params.userId}/show`);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).send("Likes Error");
+    });
+  });
+
   router.get("/:mapId", (req, res) => {
     knex
       .select("*")

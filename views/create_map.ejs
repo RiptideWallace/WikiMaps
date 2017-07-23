@@ -52,7 +52,7 @@
           <label for="image">Image:</label>
           <input id="image_url" class="form-control" type="text" name="image_url">
         </div>
-        <input type="submit" class="btn btn-block btn-primary" value="Save Map">
+        <input type="submit" id ="saveMap" class="btn btn-block btn-primary" value="Save Map">
       </form>
     </div>
 
@@ -154,21 +154,29 @@
 
       $('#saveMarkerInfo').on('click', function(event){
         var markerInfo = $('#markerInfo').serialize();
-        $.ajax({
-          type: 'POST',
-          data: $('#markerInfo').serialize(),
-          url: '/api/markers',
-          success: function(data) {
-          }
-        })
+        // $.ajax({
+        //   type: 'POST',
+        //   data: $('#markerInfo').serialize(),
+        //   url: '/api/markers',
+        //   success: function(data) {
+        //   }
+        // })
         saveMarkers.push(markerInfo);
         $('.infoTitle').val("");
         $('.infoOutline').val("");
         $('.infoLink').val("");
         infowindow.close();
         alert('Location Saved!');
-        console.log(saveMarkers)
+        console.log(saveMarkers);
       });
+
+      $('#saveMap').on('click', function(){
+        knex('markers')
+          .insert(saveMarkers)
+          .then((results) => {
+        res.redirect("/");
+      })
+      })
   </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
     </script>

@@ -5,14 +5,13 @@ jQuery(document).ready(function(){
     url: "/maps/" + mapId,
   }).done((maps) => {
     for(map of maps) {
-      ($("#map-title").text(map.name)
-        .append($("<div>").text(map.description))
+      ($("#map-title").append($("<h2>").text(map.name))
+        .append($("<p>").text(map.description))
         ).appendTo($("#map-greeting-info"));
     }
   }).fail((error) => {
     console.log(error)
     $("#map").empty().text(error.responseText);
   })
-
 
 });

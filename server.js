@@ -17,7 +17,7 @@ const cookieSession = require('cookie-session');
 // Seperated Routes for each Resource
 const mapRoutes = require("./routes/maps");
 const userRoutes = require("./routes/users");
-const markerRoutes = require("./routes/markers");
+//const markerRoutes = require("./routes/markers");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -52,7 +52,7 @@ app.use(express.static("public"));
 
 app.use("/maps", mapRoutes(knex));
 app.use("/users", userRoutes(knex));
-app.use("/api/markers", markerRoutes(knex));
+//app.use("/api/markers", markerRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {

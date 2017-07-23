@@ -89,14 +89,14 @@
     </form>
 
   </div>
-  <div id='saveMessage'>Location Saved</div>
   <script>
       var googleMap;
       var marker;
       var markers = [];
       var saveMarkers = [];
       var infoWindow;
-      var messagewindow;
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
       //The initial map that is shown on load
       function initMap() {
         var victoria = {lng: -123.3656, lat: 48.4284};
@@ -108,9 +108,6 @@
         infowindow = new google.maps.InfoWindow({
           content: document.getElementById('markerInfo')
         });
-        messagewindow = new google.maps.InfoWindow({
-          content: document.getElementById('saveMessage')
-        });
         //Adds a marker when a point on the map is clicked
         googleMap.addListener('click', function(event) {
           addMarker(event.latLng);
@@ -120,6 +117,7 @@
       function addMarker(location) {
         var marker = new google.maps.Marker({
           position: location,
+          label: labels[labelIndex++ % labels.length],
           map: googleMap
         });
         markers.push(marker);
@@ -169,17 +167,11 @@
         $.ajax({
           type: 'POST',
           data: saveMarkers,
-          url: '/api/markers',
+          url: '/maps',
           success: function(data) {
             res.redirect("/");
           }
         })
-
-      //   knex('markers')
-      //     .insert(saveMarkers)
-      //     .then((results) => {
-      //   res.redirect("/");
-      // })
       })
   </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">

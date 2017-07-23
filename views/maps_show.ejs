@@ -59,6 +59,8 @@
     <script>
       var showInfoWindow;
       var showMap;
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
 
       function initMap() {
         var victoria = {lat: 48.4284, lng: -123.3656};
@@ -91,10 +93,11 @@
         function addMarker(location) {
           var marker = new google.maps.Marker({
             position: location,
+            label: labels[labelIndex++ % labels.length],
             map: showMap
           });
+
           google.maps.event.addListener(marker, 'click', function(event) {
-            addMarker(event.latLng);
             $.ajax({
               method: "GET",
               url:"/maps/" + $('#map-id').val() + "/markers/",

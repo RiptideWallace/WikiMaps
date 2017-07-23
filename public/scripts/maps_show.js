@@ -7,7 +7,7 @@ jQuery(document).ready(function(){
     for(map of maps) {
       ($("#map-title").text(map.name)
         .append($("<div>").text(map.description))
-        ).appendTo($("body"));
+        ).appendTo($("#map-greeting-info"));
     }
   }).fail((error) => {
     console.log(error)

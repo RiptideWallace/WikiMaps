@@ -17,9 +17,8 @@ module.exports = (knex) => {
   router.post("/new", (req, res) => {
     knex('maps')
       .insert({name: req.body.name, description: req.body.description, image_url: req.body.image_url})
-    knex('markers')
-      .insert({title: req.body.title, outline: req.body.outline, link: req.body.link, longitude: req.body.longitude, latitude: req.body.latitude})
       .then((results) => {
+        console.log(results)
         res.redirect("/");
       })
       .catch((err) => {

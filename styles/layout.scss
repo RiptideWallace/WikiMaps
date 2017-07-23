@@ -32,10 +32,29 @@ body {
 footer {
   border-top: 1px solid $brand-divider-light;
   color: $brand-text-light;
-  font-size: 0.8em;
   margin-top: 20px;
   padding: 20px 0;
   text-align: center;
+  .footer-copyright {
+    font-size: 0.8em;
+  }
+  .footer-link {
+    button {
+      background: none;
+      border: none;
+      color: #337ab7;
+    }
+    button:hover {
+      color: #23527c;
+    }
+    font-size: 1em;
+    padding-bottom: 20px
+  }
+  .footer-nav {
+    .footer-link {
+      font-size: 1em;
+    }
+  }
 }
 
 html {

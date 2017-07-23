@@ -23,6 +23,13 @@
     </div>
     <div>
       <h3 id="map-greeting-info"></h3>
+    <% if (userId) { %>
+    <div>
+      <form action="/maps/likes/:id" method="POST">
+        <button type="submit" class="btn btn-block btn-primary"><span class='glyphicon glyphicon-heart-empty'> &nbsp Favourite this map</button>
+      </form>
+    </div>
+    <% } %>
     <div id="map"></div>
     <form action="/api/markers/new" method="POST" id='showInfo'>
       <table>

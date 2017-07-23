@@ -8,7 +8,7 @@ module.exports = (knex) => {
 
   router.get("/:id/maps", (req, res) => {
     knex
-      .select("maps.name", "maps.description", "maps.image_url")
+      .select("maps.name", "maps.description", "maps.image_url", "maps.id")
       .from('maps')
       .leftJoin('users', 'maps.user_id', 'users.id')
       .where({user_id: req.params.id})

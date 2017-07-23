@@ -26,6 +26,7 @@ jQuery(document).ready(function(){
             .append($("<p>").text(map.description))
             .append($("<img>").attr("src", map.image_url).addClass("img-responsive center-block"))
             .append($("<h3>").text(function() { return "Likes " + (map.id); })) //where map.id, replace with getLikes(map.id) once working properly
+            .append($("<a href='/maps/" + map.id + "/show'><span class='glyphicon glyphicon-heart-empty'></a>"))
           )
         )
       )
@@ -51,6 +52,7 @@ jQuery(document).ready(function(){
             .append($("<p>").text(map.description))
             .append($("<img>").attr("src", map.image_url).addClass("img-responsive center-block"))
             .append($("<h3>").text(function() { return "Likes " + (map.id); })) //where map.id, replace with getLikes(map.id) once working properly
+            .append($("<a href='/maps/" + map.id + "/show'><span class='glyphicon glyphicon-heart-empty'></a>"))
           )
         )
       )

@@ -7,35 +7,36 @@
 
     <% include partials/_head.ejs %>
 
-    <style>
-       #map {
-        height: 400px;
-        width: 100%;
-       }
-    </style>
+    <!-- View-specific styles -->
+    <link rel="stylesheet" href="/styles/maps_show.css" type="text/css" />
 
+    <!-- View-specific scripts -->
     <script type="text/javascript" src="/scripts/maps_show.js"></script>
   </head>
   <body>
 
   <% include partials/_header.ejs %>
 
-  <div class="container">
+  <div class="container map-show-container">
+
     <input type="hidden" id="map-id" value="<%=mapId%>">
-    <div id="map-title">
+
+    <div class="map-details-container">
     </div>
-    <div id="map-greeting-info">
-    </div>
+
     <% if (userId) { %>
+
     <div>
-      <form action="/maps/likes/<%=mapId%>/<%=userId%>" method="POST">
+      <form action="/maps/likes/:id" method="POST">
         <button type="submit" class="btn btn-block btn-primary">
           <span class='glyphicon glyphicon-heart-empty'></span>
           <span>&nbsp Favourite this map</span>
         </button>
       </form>
     </div>
+
     <% } %>
+
   </div>
 
     <div id="map"></div>
@@ -100,9 +101,9 @@
             }).done((markers) => {
               markers.forEach(function(marker) {
                 ($("body")
-                  .append($("<div>").text(marker.identifier))
                   .append($("<div>").text(marker.title))
                   .append($("<div>").text(marker.outline))
+                  .append($("<div>").text(marker.link))
                   .appendTo($("body"))
                 )
               })

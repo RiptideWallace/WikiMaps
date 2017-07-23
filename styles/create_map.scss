@@ -10,7 +10,7 @@
   line-height: 30px;
   padding: 5px;
   position: relative;
-  bottom: 150px;
+  top: -150px;
   width: 150px;
   z-index: 5;
 }
@@ -21,4 +21,8 @@
 
 #saveMessage {
   display: none;
+}
+
+.form-container {
+  margin-top: -100px;
 }

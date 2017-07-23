@@ -17,12 +17,11 @@
     <script type="text/javascript" src="/scripts/maps_show.js"></script>
   </head>
   <body>
-    <% include partials/_header.ejs %>
+  <% include partials/_header.ejs %>
     <input type="hidden" id="map-id" value="<%=mapId%>">
-    <div id="map-title">
-    </div>
-    <div>
-      <h3 id="map-greeting-info"></h3>
+    <div id="map-title"></div>
+  <div>
+    <h3 id="map-greeting-info"></h3>
     <div id="map"></div>
     <form action="/api/markers/new" method="POST" id='showInfo'>
       <table>
@@ -39,68 +38,67 @@
         </tr>
       </table>
     </form>
-      <script>
-        var showInfoWindow;
-        var showMap;
+  <div class= "markerDetails"></div>
+    <script>
+      var showInfoWindow;
+      var showMap;
 
-        function initMap() {
-          var victoria = {lat: 48.4284, lng: -123.3656};
-          showMap = new google.maps.Map(document.getElementById('map'), {
-            zoom: 13,
-            center: victoria
-          });
-
-          showInfoWindow = new google.maps.InfoWindow({
-          content: document.getElementById('showInfo')
-          });
-
-          google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
-            $.ajax({
-            method: "GET",
-            url: "/maps/"+ $('#map-id').val() +"/markers",
-          }).done((markers) => {
-            markers.forEach(function(marker) {
-              var position = {
-                lat: marker.latitude,
-                lng: marker.longitude
-              }
-              addMarker(position);
-            });
-          }).fail((error) => {
-          console.log(error)
-          $("#map").empty().text(error.responseText);
-          });
+      function initMap() {
+        var victoria = {lat: 48.4284, lng: -123.3656};
+        showMap = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: victoria
         });
-          function addMarker(location) {
-            var marker = new google.maps.Marker({
-              position: location,
-              map: showMap
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-              var test = marker
 
+        showInfoWindow = new google.maps.InfoWindow({
+        content: document.getElementById('showInfo')
+        });
 
-              $.ajax({
-                method: "GET",
-                url:"/maps/" + $('#map-id').val() + "/markers/",
-              }).done((markers) => {
-                markers.forEach(function(marker) {
-                  ($("#showInfo")
-                    .append($("<td>").text(marker.title))
-                    .append($("<td>").text(marker.outline))
-                    .append($("<td>").text(marker.link))
-                    .appendTo($("#showInfo"))
-                  )
-                })
+        google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
+          $.ajax({
+          method: "GET",
+          url: "/maps/"+ $('#map-id').val() +"/markers",
+        }).done((markers) => {
+          markers.forEach(function(marker) {
+            var position = {
+              lat: marker.latitude,
+              lng: marker.longitude
+            }
+            addMarker(position);
+          });
+        }).fail((error) => {
+        console.log(error)
+        $("#map").empty().text(error.responseText);
+        });
+      });
+        function addMarker(location) {
+          var marker = new google.maps.Marker({
+            position: location,
+            map: showMap
+          });
+          google.maps.event.addListener(marker, 'click', function(event) {
+            addMarker(event.latLng);
+            $.ajax({
+              method: "GET",
+              url:"/maps/" + $('#map-id').val() + "/markers/",
+            }).done((markers) => {
+              markers.forEach(function(marker) {
+                ($("body")
+                  .append($("<div>").text(marker.title))
+                  .append($("<div>").text(marker.outline))
+                  .append($("<div>").text(marker.link))
+                  .appendTo($("body"))
+                )
               })
             })
-              showInfoWindow.open(showMap, marker);
-          };
-        }
-      </script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
-      </script>
-      </div>
+          })
+          showInfoWindow.open(showMap, marker);
+        };
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
+    </script>
+  </div>
   </body>
 </html>

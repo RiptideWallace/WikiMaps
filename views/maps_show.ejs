@@ -27,7 +27,7 @@
     <% if (userId) { %>
 
     <div>
-      <form action="/maps/likes/:id" method="POST">
+      <form action="/maps/likes/<%=mapId%>/<%=userId%>" method="POST">
         <button type="submit" class="btn btn-block btn-primary">
           <span class='glyphicon glyphicon-heart-empty'></span>
           <span>&nbsp Favourite this map</span>

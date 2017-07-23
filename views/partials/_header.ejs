@@ -11,13 +11,34 @@
           </a>
         </div>
         <div class="navbar-right authentication-container">
-        <% if (userId) { %>
-          <form action="/logout" method="POST">
-            <button type="submit" class="btn btn-warning">Logout</button>
-          </form>
-        <% } else { %>
-          <p class="navbar-text navbar-right"><a href="/login">Login</a> or <a href="/register">Register</a></p>
-        <% } %>
+          <% if (userId) { %>
+          <button class="btn btn-default navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span>Menu &nbsp</span>
+            <span class="glyphicon glyphicon-menu-hamburger navbar-toggler-icon"></span>
+          </button>
         </div>
       </nav>
+        <div class="navbar-menu-container">
+          <div class="collapse" id="navbarToggleExternalContent">
+            <ul>
+              <li>
+                <a class="btn btn-block btn-default" href="/">My Maps</a>
+              </li>
+              <li>
+                <a class="btn btn-block btn-default" href="/maps/new">Create New Map</a>
+              </li>
+              <li>
+                <form action="/logout" method="POST">
+                  <button type="submit" class="btn btn-block btn-warning">Logout</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar-right authentication-container">
+          <% } else { %>
+            <p class="navbar-text navbar-right"><a href="/login">Login</a> or <a href="/register">Register</a></p>
+          <% } %>
+        </div>
+
     </header>

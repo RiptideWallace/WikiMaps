@@ -16,7 +16,7 @@
   <body>
 
   <% include partials/_header.ejs %>
-
+  <main>
   <div class="container map-show-container">
 
     <input type="hidden" id="map-id" value="<%=mapId%>">
@@ -40,22 +40,7 @@
   </div>
 
     <div id="map"></div>
-    <form action="/api/markers/new" method="POST" id='showInfo'>
-      <table>
-        <tr>
-          <td class="titleInput"></td>
-        </tr>
-        <tr>
-          <td class="outlineInput"></td>
-        </tr>
-        <tr>
-          <td class="linkInput"></td>
-        </tr>
-        <tr>
-        </tr>
-      </table>
-    </form>
-  <div class= "markerDetails"></div>
+    <div class="markerDetails"></div>
     <script>
       var showInfoWindow;
       var showMap;
@@ -103,11 +88,11 @@
               url:"/maps/" + $('#map-id').val() + "/markers/",
             }).done((markers) => {
               markers.forEach(function(marker) {
-                ($("body")
-                  .append($("<div>").text(marker.identifier))
-                  .append($("<div>").text(marker.title))
-                  .append($("<div>").text(marker.outline))
-                  .appendTo($("body"))
+                ($("main")
+                  .append($("<div id='markerLetter'>").text(marker.identifier))
+                  .append($("<div id='markerTitle'>").text(marker.title))
+                  .append($("<div id='markerOutline'>").text(marker.outline))
+                  .appendTo($("main"))
                 )
               })
             })
@@ -120,6 +105,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
       </script>
     </div>
+    </main>
     <% include partials/_footer.ejs %>
   </body>
 </html>

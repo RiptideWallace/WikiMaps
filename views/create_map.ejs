@@ -18,7 +18,23 @@
   </head>
   <body>
   <% include partials/_header.ejs %>
+
   <div id="map"></div>
+
+  <div id="floating-panel">
+    <div class="btn btn-block btn-default btn-floating-panel" onclick="clearMarkers();" type="button">
+      <span class="glyphicon glyphicon-eye-close"></span>
+      &nbsp Hide Markers
+    </div>
+    <div class="btn btn-block btn-default btn-floating-panel" onclick="showMarkers();" type="button">
+      <span class="glyphicon glyphicon-eye-open"></span>
+      &nbsp Show Markers
+    </div>
+    <div class="btn btn-block btn-default btn-floating-panel" onclick="deleteMarkers(), $('#markerInfo').empty();" type="button">
+      <span class="glyphicon glyphicon-trash"></span>
+      &nbsp Delete Markers
+    </div>
+  </div>
 
   <div class="container">
     <div class="container form-container">
@@ -39,13 +55,6 @@
         <input type="submit" class="btn btn-block btn-primary" value="Save Map">
       </form>
     </div>
-
-    <div id="floating-panel">
-      <input onclick="clearMarkers();" type="button" value="Hide Markers">
-      <input onclick="showMarkers();" type="button" value="Show All Markers">
-      <input onclick="deleteMarkers(), $('#markerInfo').empty();" type=button value="Delete Markers">
-    </div>
-
 
     <form action="/api/markers/new" method="POST" id='markerInfo'>
       <table>

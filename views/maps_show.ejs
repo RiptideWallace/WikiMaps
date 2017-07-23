@@ -101,9 +101,9 @@
             }).done((markers) => {
               markers.forEach(function(marker) {
                 ($("body")
+                  .append($("<div>").text(marker.identifier))
                   .append($("<div>").text(marker.title))
                   .append($("<div>").text(marker.outline))
-                  .append($("<div>").text(marker.link))
                   .appendTo($("body"))
                 )
               })

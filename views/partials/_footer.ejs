@@ -1,5 +1,37 @@
 <!-- views/partials/_footer.ejs -->
 
     <footer class="container">
-      <p>&copy; Created 2017 by Wiki Map Pals</p>
+      <div class="footer-nav">
+        <div class="col-xs-12 col-sm-3 footer-link">
+          <a href="/" title="WikiMaps Home - View All Maps">
+            <span class="glyphicon glyphicon-home"></span>
+            <span>&nbsp All Maps</span>
+          </a>
+        </div>
+        <div class="col-xs-12 col-sm-3 footer-link">
+          <a href="/users/<%= userId %>/show" title="My Maps">
+            <span class="glyphicon glyphicon-user"></span>
+            <span>&nbsp My Maps</span>
+          </a>
+        </div>
+        <div class="col-xs-12 col-sm-3 footer-link">
+          <a href="/maps/new" title="Create a New Map">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span>&nbsp Create New Map</span>
+          </a>
+        </div>
+        <div class="col-xs-12 col-sm-3 footer-link">
+          <form action="/logout" method="POST">
+            <button type="submit" class="btn-footer">
+              <span class="glyphicon glyphicon-log-out"></span>
+              <span>&nbsp Logout</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-xs-12 footer-copyright">
+        <p>&copy; Created 2017 by WikiMap Pals</p>
+      </div>
+
     </footer>

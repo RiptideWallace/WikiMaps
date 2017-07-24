@@ -40,7 +40,7 @@
     <% } %>
 
   </div>
-  <form action="/api/markers/new" method="POST" id='markerInfo'>
+  <form action="/api/markers/new/" method="POST" id='markerInfo'>
     <table>
       <tr>
         <td>Title:</td>
@@ -128,23 +128,23 @@
           infowindow.open(showMap, marker);
         });
 
-        google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
-          $.ajax({
-          method: "GET",
-          url: "/maps/"+ $('#map-id').val() +"/markers",
-        }).done((markers) => {
-          markers.forEach(function(marker) {
-            var position = {
-              lat: marker.latitude,
-              lng: marker.longitude
-            }
-            addMarker(position);
-          });
-        }).fail((error) => {
-        console.log(error)
-        $("#map").empty().text(error.responseText);
-        });
-        });
+        // google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
+        //   $.ajax({
+        //   method: "GET",
+        //   url: "/maps/"+ $('#map-id').val() +"/markers",
+        // }).done((markers) => {
+        //   markers.forEach(function(marker) {
+        //     var position = {
+        //       lat: marker.latitude,
+        //       lng: marker.longitude
+        //     }
+        //     addMarker(position);
+        //   });
+        // }).fail((error) => {
+        // console.log(error)
+        // $("#map").empty().text(error.responseText);
+        // });
+        // });
       }
 
       // Sets the map on all markers in the array.

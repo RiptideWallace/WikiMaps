@@ -29,15 +29,15 @@
       <form action="/maps/new" method="POST">
         <div class="form-group">
           <label for="name">Name:</label>
-          <input id="name" class="form-control" type="text" name="name">
+          <input id="name" class="form-control" type="text" name="name" placeholder="Give your map a catchy title">
         </div>
         <div class="form-group">
           <label for="description">Description:</label>
-          <input id="description" class="form-control" type="text" name="description">
+          <input id="description" class="form-control" type="text" name="description" placeholder="Describe your map in a sentence or two">
         </div>
         <div class="form-group">
           <label for="image">Image:</label>
-          <input id="image_url" class="form-control" type="text" name="image_url">
+          <input id="image_url" class="form-control" type="text" name="image_url" value="/images/default-map.png">
         </div>
         <input type="submit" id ="saveMap" class="btn btn-block btn-primary" value="Save Map">
       </form>

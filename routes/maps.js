@@ -14,9 +14,9 @@ module.exports = (knex) => {
     });
   });
 
-  router.post("/new", (req, res) => {
+  router.post("/new/:uid", (req, res) => {
     knex('maps')
-      .insert({name: req.body.name, description: req.body.description, image_url: req.body.image_url})
+      .insert({name: req.body.name, user_id: req.params.uid, description: req.body.description, image_url: req.body.image_url})
       .then((results) => {
         console.log(results)
         res.redirect("/");

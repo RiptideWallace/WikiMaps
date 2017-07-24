@@ -54,7 +54,6 @@ module.exports = (knex) => {
           res.status(404).send("This user is not in our DB");
           return;
         }
-        console.log("db password", results[0].password);
         if (!bcrypt.compareSync(req.body.password, results[0].password)) {
           res.status(404).send("Invalid password");
           return;

@@ -108,6 +108,7 @@
           addMarker(event.latLng);
         });
       }
+
       // Adds a marker to the map and push to the array.
       function addMarker(location) {
         var marker = new google.maps.Marker({
@@ -126,7 +127,26 @@
           $('#saveMessage').css('display', 'block');
           infowindow.open(showMap, marker);
         });
+
+        google.maps.event.addListenerOnce(showMap, 'tilesloaded', function(event){
+          $.ajax({
+          method: "GET",
+          url: "/maps/"+ $('#map-id').val() +"/markers",
+        }).done((markers) => {
+          markers.forEach(function(marker) {
+            var position = {
+              lat: marker.latitude,
+              lng: marker.longitude
+            }
+            addMarker(position);
+          });
+        }).fail((error) => {
+        console.log(error)
+        $("#map").empty().text(error.responseText);
+        });
+        });
       }
+
       // Sets the map on all markers in the array.
       function setMapOnAll(setMap) {
         for (var i = 0; i < markers.length; i++) {
@@ -149,12 +169,38 @@
 
       $('#saveMarkerInfo').on('click', function(event){
         var markerInfo = $('#markerInfo').serialize();
+        $.ajax({
+          type: 'POST',
+          data: $('#markerInfo').serialize(),
+          url: '/api/markers',
+          success: function(data) {
+          }
+        })
         $('.infoTitle').val("");
         $('.infoOutline').val("");
         $('.infoLink').val("");
         infowindow.close();
         alert('Location Saved!');
       });
+
+        jQuery(document).ready(function() {
+        $.ajax({
+          method: "GET",
+          url:"/maps/" + $('#map-id').val() + "/markers/",
+        }).done((markers) => {
+          markers.forEach(function(marker) {
+            ($("main")
+              .append($("<div id='markerLetter'>").text(marker.identifier))
+              .append($("<div id='markerTitle'>").text(marker.title))
+              .append($("<div id='markerOutline'>").text(marker.outline))
+              .appendTo($("main"))
+            )
+          });
+        });
+      });
+
+
+
       </script>
       <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">

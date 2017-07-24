@@ -18,7 +18,6 @@ module.exports = (knex) => {
     knex('maps')
       .insert({name: req.body.name, description: req.body.description, image_url: req.body.image_url})
       .then((results) => {
-        console.log(results)
         res.redirect("/");
       })
       .catch((err) => {

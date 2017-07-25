@@ -43,38 +43,8 @@
       </form>
     </div>
   </div>
-  <script>
-      var googleMap;
-      //The initial map that is shown on load
-      function initMap() {
-        var victoria = {lng: -123.3656, lat: 48.4284};
-        googleMap = new google.maps.Map(document.getElementById('map'), {
-          center: victoria,
-          zoom: 13
-        });
-      }
-      // Adds a marker to the map and push to the array.
-      function addMarker(location) {
-        var marker = new google.maps.Marker({
-          position: location,
-          label: labels[labelIndex++ % labels.length],
-          map: googleMap
-        });
-        /*markers.push(marker);
-        google.maps.event.addListener(marker, 'click', function() {
-          $('#markerLng').val(location.lng);
-          $('#markerLat').val(location.lat);
-          $('.infoTitle').val("");
-          $('.infoOutline').val("");
-          $('.infoLink').val("");
-          $('#markerInfo').css('display', 'block');
-          $('#saveMessage').css('display', 'block');
-          infowindow.open(googleMap, marker);
-        });*/
-      }
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
   </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIPf2G0F43hrQxXCfg5engv6gqMyv3dvA&callback=initMap">
-    </script>
     <% include partials/_footer.ejs %>
   </body>
 </html>

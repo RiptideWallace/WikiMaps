@@ -1,29 +1,38 @@
-# Node Skeleton
+# WikiMaps
 
-## Project Setup
+WikiMaps is a webapplication that makes use of the Google Maps API alongside Express, EJS, and jQuery. It allows users to create their own maps with lists of notable points, view maps made by other users, and favourite maps. User authentication is handled by bcrypt and cookie-session. PostgreSQL stores map and user data, with migration and seeding using Knex. Sass and Bootstrap are used for styling with a focus on mobile-first usability.
 
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+WikiMaps is a group effort, created as part of course work from [Lighthouse Labs](https://github.com/lighthouse-labs).
 
-## Getting Started
+## Team Members
+- [Chris Bryson]https://github.com/RiptideWallace
+- [Madeline Collier](https://github.com/MadelineCollier)
+- [Tyler Krys](https://github.com/ty2k)
+- [Lawrence Surges](https://github.com/surgeslc)
 
-1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information
-3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Run migrations: `npm run knex migrate:latest`
-  - Check the migrations folder to see what gets created in the DB
-6. Run the seed: `npm run knex seed:run`
-  - Check the seeds file to see what gets seeded in the DB
-7. Run the server: `npm run local`
-8. Visit `http://localhost:8080/`
+## Installation
+
+`npm install`
+
+## Database Setup
+
+The included `knexfile.js` sets up Knex for migration and seeding into a PostgreSQL database. Create a `.env` file using the including `.env.example` after creating an empty PostgreSQL database. In your installation's home directory, run `knex migrate:latest` to create your database tables (see [this Knex migration article](http://perkframework.com/v1/guides/database-migrations-knex.html) for more on Knex migrations). You can use `knex seed:run` to seed the database with some initial map and user data.
+
+## Run
+
+`npm start`
 
 ## Dependencies
 
-- Node 5.10.x or above
-- NPM 3.8.x or above
+ - bcrypt": "^1.0.2",
+ - "body-parser": "^1.15.2",
+ - "cookie-session": "^2.0.0-beta.2",
+ - "dotenv": "^4.0.0",
+ - "ejs": "^2.4.1",
+ - "express": "^4.13.4",
+ - "knex": "^0.13.0",
+ - "knex-logger": "^0.1.0",
+ - "morgan": "^1.7.0",
+ - "node-sass": "4.3.0",
+ - "node-sass-middleware": "^0.11.0",
+ - "pg": "^7.0.1"
